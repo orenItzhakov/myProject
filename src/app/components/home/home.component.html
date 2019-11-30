@@ -1,0 +1,46 @@
+<div>
+    <button (click)="clickNumber = clickNumber + 1">Click me</button>
+    <span> --- >   you click {{clickNumber}}</span>
+    <br>
+    <input type="text" [(ngModel)]='name' OnlyNumber>
+    <span [ngClass]="getClasses()">your text : {{name}}</span>
+</div>
+
+<div>
+    <h3>text from view child is: {{textFromViewChild}}</h3>
+    <h3>text from service is: {{textFromViewService}}</h3>
+</div>
+
+<!-- <div [style.background-color]="clickNumber > 5 ? 'red' : 'green'"> -->
+<div [ngStyle]="{
+    'background-color': clickNumber > 5 ? 'red' : 'green',
+    'border': clickNumber > 5 ? '3px solid blue' : '2px solid pink'
+}">
+    <p *ngIf="clickNumber > 5; else bigger" [class.oren]="clickNumber > 10">Big</p>
+    <ng-template #bigger>
+        <p>Small</p>
+    </ng-template>
+</div>
+
+<div>
+    <h2>3 ways binding</h2>
+    <img src="{{myImgUrl}}">
+    <img [src]="myImgUrl">
+    <img bind-src="myImgUrl">
+    <span [hidden]="isOK"> no hidden </span>
+    <button [disabled]="isOK">click if disabled</button>
+</div>
+
+<div>
+    <h2>pipes</h2>
+    <p>she was born in {{someDate | date}}</p><br>
+    <p>without pipe: M6y p6ipe wit6hout num645bers in sentence343435443222</p>
+    <p>with pipe: {{'M6y p6ipe wit6hout num645bers in sentence343435443222' | noNumbers}}</p>
+</div>
+
+<div>
+    <input type="text" [(ngModel)]="patherText">
+    <h3>parent text: {{patherText}}</h3>
+    <h3>child text: {{childText}}</h3>
+    <app-child (childEvent)="setChild($event)" [pather]="patherText"></app-child>
+</div>

@@ -1,0 +1,19 @@
+<h1 highLight>Breweries</h1>
+
+<button (click)="giveMore()">More</button>
+<button (click)="giveLess()">Less</button>
+
+<div [ngSwitch]="switchColor">
+    <div class="cube" *ngSwitchCase="'red'" [style.background-color]="switchColor"></div>
+    <div class="cube" *ngSwitchCase="'green'" [style.background-color]="switchColor"></div>
+    <div class="cube" *ngSwitchCase="'blue'" [style.background-color]="switchColor"></div>
+    <div class="cube" *ngSwitchDefault [style.background-color]="switchColor"></div>
+</div>
+
+<ul *ngIf="fakeData">
+  <li *ngFor="let brew of fakeData.slice(0,arrLen)" >
+    <p class="name">{{ brew.name }}</p>
+    <p class="country">{{ brew.country }}</p>
+    <a class="site" href="{{ brew.website_url }}">site</a>
+  </li>
+</ul>
