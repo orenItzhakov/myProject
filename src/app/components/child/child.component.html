@@ -3,3 +3,9 @@
     <h3>child text: {{childText}}</h3>
     <h3>parent text: {{pather}}</h3>
 </div>
+
+<!-- will show all content from father -->
+<ng-content></ng-content>
+<hr>
+<!-- will show only class 'color' content from father -->
+<ng-content select=".color"></ng-content>

@@ -42,5 +42,8 @@
     <input type="text" [(ngModel)]="patherText">
     <h3>parent text: {{patherText}}</h3>
     <h3>child text: {{childText}}</h3>
-    <app-child (childEvent)="setChild($event)" [pather]="patherText"></app-child>
+    <app-child (childEvent)="setChild($event)" [pather]="patherText">
+        <h2>text from home compontent with ng-content</h2>
+        <span class="color">Color class</span>
+    </app-child>
 </div>

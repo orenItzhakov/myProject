@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, ViewChild, OnInit } from '@angular/core';
+import { Component, AfterViewInit, ViewChild, OnInit, ViewChildren, QueryList } from '@angular/core';
 import { ChildComponent } from '../child/child.component';
 import { HttpService } from 'src/app/services/http.service';
 
@@ -9,6 +9,7 @@ import { HttpService } from 'src/app/services/http.service';
 })
 export class HomeComponent implements AfterViewInit, OnInit {
   @ViewChild(ChildComponent, { static: false }) child;
+  // @ViewChildren(ChildComponent) children: QueryList<ChildComponent>;
 
   textFromViewChild: string;
   textFromViewService: string;
@@ -25,10 +26,14 @@ export class HomeComponent implements AfterViewInit, OnInit {
     setTimeout(() => {
       this.textFromViewChild = this.child.childTextForViewChild;
     });
+
+    // setTimeout(() => {
+    //   console.log(this.children.toArray());
+    // });
   }
 
   ngOnInit() {
-    this.httpService.currMessage.subscribe((message)=>{
+    this.httpService.currMessage.subscribe((message) => {
       this.textFromViewService = message;
     });
   }
